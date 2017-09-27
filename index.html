@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html class="noselect">
+  <head>
+    <meta charset="UTF-8">
+    <title>RemoteControl-Desktop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="static/lib/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/lib/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/index.css">
+    <script src="static/js/init.js"></script>
+    <!-- https://github.com/electron/electron/issues/3647  -->
+  </head>
+  <body class="noselect">
+    <nav class="navbar"></nav>
+    <div class="left">
+      <div class="row-head">
+        <span>
+          <span class="fa fa-server row-icon"></span>
+          服务器列表
+        </span>
+      </div>
+      <div class="row-item">
+        <ul id="server-list">
+          <li v-for="svr in serverList">
+            <span class="fa fa-minus-square row-icon row-icon-btn"></span>
+            <span v-bind:style="{textDecoration: svr.connected ? 'none' : 'line-through'}">{{svr.ip}}:{{svr.port}}</span>
+          </li>
+          <li>
+            <span class="row-icon-btn" data-toggle="modal" data-target="#serverModal">
+              <span class="fa fa-plus-square row-icon"></span>
+              添加服务器
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="right">
+      <ul class="phone-list" id="phone-list">
+          <li v-for="p in devices.slice(0, 4)">
+            <div class="phone">
+              <div class="phone-header phone-info">
+                <p>{{p.sn}}@{{p.server.ip}}:{{p.server.port}}</p>
+              </div>
+              <div class="phone-body">
+                <img v-bind:onclick="'phoneClick(\'' + p.sn + '\')'" style="max-width: 100%;" class="phone-shot" v-bind:src="'http://127.0.0.1:6655/shot/' + p.sn" /> 
+              </div>
+              <div class="phone-footer phone-info">
+                <div>{{p.sn}}<a style="float: right; margin-right:8px;">🖕</a></div>
+              </div>
+            </div>
+          </li>
+        <!-- 群控机  -->
+        <li>
+          <div class="phone">
+            <div class="phone-header phone-info">
+              <p>群控机@1920x1080</p>
+            </div>
+            <div class="phone-body" id="control-all-phone">
+              <div v-for="p in devices" class="small-phone">
+                <img style="max-width: 100%;" class="phone-shot" v-bind:src="'http://127.0.0.1:6655/shot/' + p.sn">
+              </div>
+            </div>
+            <div class="phone-footer phone-info">
+              <div>别问那么多了，点开试试</div>
+            </div>
+          </div>
+        </li>
+        <!-- 群控机 end  -->
+      </ul>
+      <div class="bottom text-center"><span>Copyright © Harry 2017</span></div>
+    </div>
+    <!-- modal  -->
+    <div class="modal fade" id="serverModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="panel panel-default">
+              <div class="panel-heading">添加服务器</div>
+              <div class="panel-body">
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon3">服务器地址</span>
+                  <input type="text" class="form-control" id="server-input" placeholder="localhost:6655">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" id="btn-addserver">添加</button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="static/lib/jquery-3.2.1.min.js"></script>
+  <script>if (typeof module === 'object') {window.jQuery = window.$ = module.exports;};</script>
+  <script src="static/lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+  <script src="static/lib/vue.js"></script>
+  <script src="static/js/index.js"></script>
+</html>

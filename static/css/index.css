@@ -1,0 +1,167 @@
+body {
+    background-color: #2B313c;
+}
+
+/* 非浏览器生效  */
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+    not supported by any browser */
+}
+
+.drag {
+    -webkit-app-region: drag;
+}
+
+.no-drag {
+    -webkit-app-region: no-drag;
+}
+
+/* btn 不能拖拽  */
+.btn {
+    -webkit-app-region: no-drag;
+}
+
+span:hover {
+    cursor: default;
+}
+
+/* 非浏览器生效 end  */
+
+.navbar {
+    background-color: #673ab8;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 64px;
+    z-index: 3;
+    border-radius: 0px;
+}
+
+#root{
+    width: 100%;
+    height: 100%;
+    transition: all 200ms linear;
+}
+
+.left {
+    position: fixed;
+    min-width: 180px;
+    max-width: 180px;
+    margin-top: 64px;
+    height: 100%;
+    background-color: #242831;
+    border-right: 1px solid #1b1e25;
+}
+
+.left > .row-head {
+    margin: 10px 10px;
+    color: white;
+    font-size: 16px;
+}
+
+.left > .row-item {
+    color: white;
+}
+
+.row-item ul {
+    padding-left: 10px;
+}
+
+.row-item li {
+    list-style-type: none;
+}
+
+.row-icon {
+    margin: 0 5px;
+}
+
+.row-icon-btn {
+    /* 非浏览器生效  */
+    -webkit-app-region: no-drag;
+    transition: all 250ms linear;
+    cursor: pointer !important;
+}
+
+.row-icon-btn:hover{
+    color: #ccc;
+}
+
+.right {
+    position: fixed;
+    left: 180px;
+    margin-top: 64px;
+    width: calc(100vw - 180px);
+    height: 100%;
+    margin-bottom: 60px;
+    overflow: scroll;
+}
+
+#phone-list {
+    display: inline-block;
+}
+
+#phone-list li {
+    float: left;
+    margin: 20px 20px;
+}
+
+.phone {
+    width: 180px;
+    height: 360px;
+}
+
+.phone-info {
+    color: #cdcdcd;
+    height: 20px;
+    line-height: 20px;
+    margin: auto;
+    font-size: 14px;
+}
+
+.phone-header {
+    border-radius: 10px 10px 0px 0px;
+    background-color: #009688;
+    text-align: center;
+    overflow: hidden;
+}
+
+.phone-body {
+    width: 100%;
+    height: 320px;
+    background-color: #00796B;
+    cursor: pointer;
+}
+
+.phone-footer {
+    width: 100%;
+    border-radius: 0px 0px 10px 10px;
+    background-color: #009688;
+    text-align: center;
+}
+
+.bottom {
+    clear: both;
+    color: white;
+    margin-top: 24px;
+    height: 100px;
+}
+
+.modal-dialog {  
+    margin: 30vh auto;  
+}
+
+.small-phone {
+    width: 90px;
+    height: 160px;
+    padding: 5px 2px;
+    float: left;
+}
+
+.phone-shot {
+    cursor: pointer;
+}
